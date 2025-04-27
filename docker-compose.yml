@@ -4,6 +4,7 @@ services:
   spring-boot:
     build:
       context: .
+      dockerfile: ./Dockerfile  # Add the relative path to your Dockerfile here
     ports:
       - "2001:2001"
     depends_on:
@@ -28,8 +29,8 @@ services:
     ports:
       - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: projectdb
+      MYSQL_ROOT_PASSWORD=root
+      MYSQL_DATABASE=projectdb
     volumes:
       - mysql_data:/var/lib/mysql
     restart: unless-stopped
