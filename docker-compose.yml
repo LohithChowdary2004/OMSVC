@@ -4,7 +4,7 @@ services:
   spring-boot:
     build:
       context: .
-      dockerfile: ./Dockerfile  # Specify the path to your Dockerfile here
+      dockerfile: ./Dockerfile  # Added this line to specify the path to the Dockerfile
     ports:
       - "2001:2001"
     depends_on:
@@ -19,7 +19,7 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - SPRING_JPA_SHOW_SQL=true
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
-      - SPRING_MVC_VIEW_PREFIX=/
+      - SPRING_MVC_VIEW_PREFIX=/ 
       - SPRING_MVC_VIEW_SUFFIX=.jsp
     restart: unless-stopped
 
@@ -30,7 +30,7 @@ services:
       - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: projectdb  # Ensure this is in key-value format
+      MYSQL_DATABASE: projectdb
     volumes:
       - mysql_data:/var/lib/mysql
     restart: unless-stopped
